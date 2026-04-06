@@ -38,9 +38,14 @@
   width: 100vw;
   /* background image is set inline in the React component for correct public folder reference */
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   position: relative;
+  padding-top: 40px;
+}
+
+.join-genfin-form {
+  margin-top: 32px;
 }
 
 .join-genfin-form {
@@ -139,4 +144,48 @@ button:disabled {
 .step-bg {
   min-height: 100vh;
   /* For a background image from public/, use inline style in your React component:
-     style={{ background: "url('/placeholder-bg.jpg') center/cover no-repeat #f5f7fa
+     style={{ background: "url('/placeholder-bg.jpg') center/cover no-repeat #f5f7fa" }}
+  */
+  background: #f5f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* Fade-in animation */
+.fade-in {
+  animation: fadeIn 0.8s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Welcoming header/message */
+.step-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.step-header h2 {
+  color: #007bff;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+.welcome-msg {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+/* Two-column grid for principal details */
+.form-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 32px;
+}
+@media (max-width: 700px) {
+  .form-grid-2col {
+    grid-template-columns: 1fr;
+  }
+}

@@ -4,6 +4,7 @@ import ListItem from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
 import { Link } from "react-router-dom";
 import { FaHome, FaInfoCircle, FaServicestack, FaProjectDiagram, FaBlog, FaPhoneAlt, FaShoppingCart, FaUserFriends, FaCogs } from 'react-icons/fa';
+import { MdClose } from 'react-icons/md';
 import './style.css';
 
 const menus = [
@@ -58,7 +59,9 @@ const MobileMenu = () => {
         <div>
             <div className={`mobileMenu ${menuActive ? "show" : ""}`}>
                 <div className="menu-close">
-                    <div className="clox" onClick={() => setMenuState(!menuActive)}><i className="ti-close"></i></div>
+                  <div className="clox" onClick={() => setMenuState(!menuActive)}>
+                    <MdClose />
+                  </div>
                 </div>
 
                 <ul className="responsivemenu">

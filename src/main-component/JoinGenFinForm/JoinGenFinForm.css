@@ -1,0 +1,142 @@
+/* Responsive navigation bar for JoinGenFinForm */
+@media (max-width: 900px) {
+  .navigation-holder {
+    width: 100%;
+    overflow-x: auto;
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    padding: 12px 0 12px 0;
+  }
+  .nav.navbar-nav {
+    flex-direction: column !important;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .nav.navbar-nav li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .nav.navbar-nav li a {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #f0e6b2;
+    color: #232526;
+    background: transparent;
+  }
+  .nav.navbar-nav li:last-child a {
+    border-bottom: none;
+  }
+}
+.join-genfin-bg {
+  min-height: 100vh;
+  width: 100vw;
+  /* background image is set inline in the React component for correct public folder reference */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.join-genfin-form {
+  max-width: 700px;
+  width: 100%;
+  margin: 60px 16px 40px 16px;
+  background: rgba(255,255,255,0.82);
+  border-radius: 14px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+  padding: 40px 28px;
+  backdrop-filter: blur(2px);
+  position: relative;
+  z-index: 2;
+}
+.form-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  border-bottom: 2px solid #eee;
+  color: #888;
+  font-weight: 500;
+}
+.step.active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+.step-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.form-group input,
+.form-group select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.form-group label {
+  font-weight: 500;
+}
+.form-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 4px;
+  background: #FFD700;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 8px;
+  border: 1px solid #FFD700;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+button:hover, button:focus {
+  background: #FFC300;
+  color: #222;
+  border: 1px solid #FFC300;
+}
+button.remove-btn {
+  background: #dc3545;
+  margin-top: 8px;
+}
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.dependent-group, .condition-detail, .pregnancy-detail {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: #fafbfc;
+}
+
+/* Background for dependents step */
+.step-bg {
+  min-height: 100vh;
+  /* For a background image from public/, use inline style in your React component:
+     style={{ background: "url('/placeholder-bg.jpg') center/cover no-repeat #f5f7fa

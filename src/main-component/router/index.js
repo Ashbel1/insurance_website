@@ -46,7 +46,7 @@ const AllRoute = () => {
           <Route path="services-s2" element={<ServicePageS2 />} />
           <Route path="service-s3" element={<ServicePageS3 />} />
           <Route path="service-single/:slug" element={<ServiceSinglePage />} />
-          <Route path="projects" element={<ProjectPage />} />
+          <Route path="plans_packages" element={<ProjectPage />} />
           <Route path="projects-s2" element={<ProjectPageS2 />} />
           <Route path="project-single/:slug" element={<ProjectSinglePage />} />
          

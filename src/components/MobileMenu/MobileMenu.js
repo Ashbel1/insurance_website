@@ -23,7 +23,7 @@ const menus = [
   {
     id: 3,
     title: 'Plans and Packages',
-    link: '/projects',
+    link: '/plans_packages',
     icon: <FaProjectDiagram style={{ marginRight: 8 }} />
   },
   {

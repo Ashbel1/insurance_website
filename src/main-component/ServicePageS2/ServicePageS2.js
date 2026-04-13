@@ -4,7 +4,7 @@ import PageTitle from '../../components/pagetitle/PageTitle'
 import ServiceSectionS2 from '../../components/ServiceSectionS2/ServiceSectionS2';
 import Scrollbar from '../../components/scrollbar/scrollbar'
 import Footer from '../../components/footer/Footer';
-import Logo from '../../images/logo-2.png'
+import Logo from '../../images/logo.png'
 
 
 const ServicePageS2 =() => {

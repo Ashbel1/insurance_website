@@ -4,7 +4,7 @@ import PageTitle from '../../components/pagetitle/PageTitle'
 import Scrollbar from '../../components/scrollbar/scrollbar'
 import Testimonial2 from '../../components/Testimonial2/TermsContent';
 import Footer from '../../components/footer/Footer';
-import Logo from '../../images/logo-2.png'
+import Logo from '../../images/logo.png'
 
 const TestimonialPage = (props) => {
 

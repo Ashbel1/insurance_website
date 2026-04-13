@@ -4,7 +4,7 @@ import PageTitle from "../../components/pagetitle/PageTitle";
 import CheckoutSection from '../../components/CheckoutSection'
 import Scrollbar from '../../components/scrollbar/scrollbar'
 import {connect} from "react-redux";
-import Logo from '../../images/logo-2.png'
+import Logo from '../../images/logo.png'
 import Footer from '../../components/footer/Footer';
 
 const CheckoutPage =({cartList}) => {

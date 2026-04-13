@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { useParams } from 'react-router-dom'
 import Projects from '../../api/project'
 import Footer from '../../components/footer/Footer';
-import Logo from '../../images/logo-2.png'
+import Logo from '../../images/logo.png'
 import { Link } from "react-router-dom";
 
 const ProjectSinglePage = (props) => {

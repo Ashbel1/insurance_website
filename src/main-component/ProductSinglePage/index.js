@@ -8,7 +8,7 @@ import { addToCart } from "../../store/actions/action";
 import Product from './product'
 import api from "../../api";
 import ProductTabs from './alltab';
-import Logo from '../../images/logo-2.png'
+import Logo from '../../images/logo.png'
 import Footer from '../../components/footer/Footer';
 
 

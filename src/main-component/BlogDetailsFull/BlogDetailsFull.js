@@ -6,7 +6,7 @@ import PageTitle from '../../components/pagetitle/PageTitle'
 import BlogSingle from '../../components/BlogDetails/BlogSingle.js'
 import Scrollbar from '../../components/scrollbar/scrollbar'
 import Footer from '../../components/footer/Footer';
-import Logo from '../../images/logo-2.png'
+import Logo from '../../images/logo.png'
 
 const BlogDetailsFull =() => {
 

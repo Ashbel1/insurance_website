@@ -1,53 +1,76 @@
 import React from 'react'
 
+
+// Helper to chunk array into rows
+function chunkArray(array, chunkSizes) {
+    let result = [];
+    let i = 0;
+    let chunkIndex = 0;
+    while (i < array.length) {
+        let size = Array.isArray(chunkSizes) ? chunkSizes[chunkIndex] || chunkSizes[chunkSizes.length - 1] : chunkSizes;
+        result.push(array.slice(i, i + size));
+        i += size;
+        chunkIndex++;
+    }
+    return result;
+}
+
+const featuresData = [
+    {
+        icon: "fa fa-hospital-o",
+        title: "Comprehensive Cover",
+        desc: "Genfin provides hospital, outpatient, and specialist cover for all your healthcare needs."
+    },
+    {
+        icon: "fa fa-user-md",
+        title: "Expert Medical Team",
+        desc: "Access a network of doctors, nurses, and healthcare professionals dedicated to your well-being."
+    },
+    {
+        icon: "fa fa-medkit",
+        title: "Medication & Pharmacy",
+        desc: "Get support for chronic medication, pharmacy needs, and ongoing treatment with Genfin."
+    },
+    {
+        icon: "fa fa-ambulance",
+        title: "Emergency Services",
+        desc: "24/7 ambulance and emergency medical response for Genfin members."
+    },
+    {
+        icon: "fa fa-stethoscope",
+        title: "Dental & Optical",
+        desc: "Dental care and optical benefits for a healthy smile and clear vision."
+    },
+    // Add more features here as needed
+];
+
 const Features = (props) => {
+    // For 5 items: 3 in first row, 2 in second row. For more, repeat pattern or use 3 per row.
+    const chunkSizes = featuresData.length === 5 ? [3, 2] : 3;
+    const rows = chunkArray(featuresData, chunkSizes);
     return (
         <section className="features-section">
             <div className="container">
-                <div className="row">
-                    <div className="col col-xs-12">
-                        <div className="feature-grids clearfix">
-                            <div className="grid">
-                                <div className="icon">
-                                    <i className="fa fa-hospital-o"></i>
-                                </div>
-                                <h3>Comprehensive Cover</h3>
-                                <p>Genfin provides hospital, outpatient, and specialist cover for all your healthcare needs.</p>
-                            </div>
-                            <div className="grid">
-                                <div className="icon">
-                                    <i className="fa fa-user-md"></i>
-                                </div>
-                                <h3>Expert Medical Team</h3>
-                                <p>Access a network of doctors, nurses, and healthcare professionals dedicated to your well-being.</p>
-                            </div>
-                            <div className="grid">
-                                <div className="icon">
-                                    <i className="fa fa-medkit"></i>
-                                </div>
-                                <h3>Medication & Pharmacy</h3>
-                                <p>Get support for chronic medication, pharmacy needs, and ongoing treatment with Genfin.</p>
-                            </div>
-                            <div className="grid">
-                                <div className="icon">
-                                    <i className="fa fa-ambulance"></i>
-                                </div>
-                                <h3>Emergency Services</h3>
-                                <p>24/7 ambulance and emergency medical response for Genfin members.</p>
-                            </div>
-                            <div className="grid">
-                                <div className="icon">
-                                    <i className="fa fa-stethoscope"></i>
-                                </div>
-                                <h3>Dental & Optical</h3>
-                                <p>Dental care and optical benefits for a healthy smile and clear vision.</p>
+                {rows.map((row, rowIdx) => (
+                    <div className="row" key={rowIdx}>
+                        <div className="col col-xs-12">
+                            <div className="feature-grids clearfix">
+                                {row.map((feature, idx) => (
+                                    <div className="grid" key={idx}>
+                                        <div className="icon">
+                                            <i className={feature.icon}></i>
+                                        </div>
+                                        <h3>{feature.title}</h3>
+                                        <p>{feature.desc}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
-                </div>
+                ))}
             </div>
         </section>
-    )
+    );
 }
 
 export default Features;

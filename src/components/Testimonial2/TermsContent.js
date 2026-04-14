@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, AlertCircle, Clock, FileText, CheckCircle, XCircle, Phone, Mail } from 'lucide-react';
+import { AlertCircle, FileText, CheckCircle, Clock, XCircle, Phone, Mail } from 'lucide-react';
 
 const TermsContent = () => {
   const waitingPeriodsGeneral = [

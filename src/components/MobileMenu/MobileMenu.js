@@ -1,9 +1,6 @@
-import React, { Fragment, useState } from 'react';
-import List from "@mui/material/List";
-import ListItem from "@mui/material/List";
-import Collapse from "@mui/material/Collapse";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { FaHome, FaInfoCircle, FaServicestack, FaProjectDiagram, FaBlog, FaPhoneAlt, FaShoppingCart, FaUserFriends, FaCogs } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaServicestack, FaProjectDiagram, FaPhoneAlt, FaCogs } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import './style.css';
 
@@ -48,7 +45,6 @@ const menus = [
 
 const MobileMenu = () => {
 
-    const [openId, setOpenId] = useState(0);
     const [menuActive, setMenuState] = useState(false);
 
     const ClickHandler = () => {
@@ -65,13 +61,13 @@ const MobileMenu = () => {
                 </div>
 
                 <ul className="responsivemenu">
-                    {menus.map((item, mn) => (
-                        <ListItem key={mn}>
-                            <Link onClick={ClickHandler} className="active" to={item.link}>
-                                {item.icon}{item.title}
-                            </Link>
-                        </ListItem>
-                    ))}
+                  {menus.map((item, mn) => (
+                    <li key={mn}>
+                      <Link onClick={ClickHandler} className="active" to={item.link}>
+                        {item.icon}{item.title}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
 
             </div>

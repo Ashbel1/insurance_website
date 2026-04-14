@@ -1,11 +1,10 @@
-import BenefitLimitsBtn from "./BenefitLimitsBtn";
 import React from "react";
-
 import { Shield, Users, Gem, Star, HeartPulse, UserPlus, Eye, CheckCircle, Info } from "lucide-react";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import BenefitLimitsBtn from "./BenefitLimitsBtn";
 // --- Benefit Limits Collapsible Component ---
 function BenefitLimits({ limits }) {
     const [open, setOpen] = React.useState(false);

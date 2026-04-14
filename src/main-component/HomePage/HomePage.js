@@ -6,7 +6,7 @@ import WorkProcess from '../../components/WorkProcess/WorkProcess';
 import About from '../../components/about/about';
 import ServiceSection from '../../components/ServiceSection/ServiceSection';
 import Testimonial from '../../components/Testimonial/Testimonial';
-import ProjectSection from '../../components/ProjectSection/ProjectSection';
+// import ProjectSection from '../../components/ProjectSection/ProjectSection';
 import FunFact from '../../components/FunFact/FunFact';
 import PartnerSection from '../../components/PartnerSection/PartnerSection';
 import ContactSection from '../../components/ContactSection/ContactSection';

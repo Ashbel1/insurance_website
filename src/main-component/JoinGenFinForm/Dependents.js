@@ -1,4 +1,4 @@
-import React, { useState, useState as useConfetti } from 'react';
+import React, { useState } from 'react';
 import { FaUsers, FaSmileBeam } from 'react-icons/fa';
 import Confetti from 'react-confetti';
 

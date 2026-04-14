@@ -5,31 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BenefitLimitsBtn from "./BenefitLimitsBtn";
-// --- Benefit Limits Collapsible Component ---
-function BenefitLimits({ limits }) {
-    const [open, setOpen] = React.useState(false);
-    return (
-        <div className="mb-2">
-            <button className="flex items-center gap-1 text-xs text-blue-700 hover:underline mb-1 mx-auto" onClick={() => setOpen((v) => !v)}>
-                <span>Benefit limits</span>
-                {open ? <span>&#9650;</span> : <span>&#9660;</span>}
-            </button>
-            {open && (
-                <div className="bg-blue-50 rounded p-2 text-xs text-blue-900 border border-blue-100 w-full">
-                    {Object.entries(limits).map(([k, v]) => (
-                        <div key={k} className="flex justify-between py-0.5">
-                            <span>{k}</span>
-                            <span className="font-semibold">{v}</span>
-                        </div>
-                    ))}
-                </div>
-            )}
-        </div>
-    );
-}
-
-
-
+// --- End unused BenefitLimits definition removed ---
 // --- Plans & Packages Data ---
 const planCategories = [
     {

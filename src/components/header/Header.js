@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import { totalPrice } from "../../utils";
-import { connect } from "react-redux";
-import { removeFromCart } from "../../store/actions/action";
 
 
 const Header = (props) => {

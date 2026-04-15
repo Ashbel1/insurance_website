@@ -131,6 +131,15 @@ const settings = {
 
 const ProjectSection = (props) => {
     const [openPlanKey, setOpenPlanKey] = React.useState(null);
+    // Find the plan object for the open modal
+    const openPlan = React.useMemo(() => {
+        for (const cat of planCategories) {
+            const found = cat.plans.find(p => p.planKey === openPlanKey);
+            if (found) return found;
+        }
+        return null;
+    }, [openPlanKey]);
+
     return (
         <section className={`projects-section ${props.prClass}`}>
             <div className="container">
@@ -160,7 +169,6 @@ const ProjectSection = (props) => {
                                         {cat.name}
                                     </h4>
                                 </div>
-                            
                                 <Slider
                                     dots={true}
                                     arrows={true}
@@ -200,13 +208,14 @@ const ProjectSection = (props) => {
                                                 <button type="button" className="flex-1 flex items-center justify-center gap-2 px-2 py-2 rounded bg-yellow-600 text-white font-semibold shadow hover:bg-yellow-700 transition text-sm min-w-0">
                                                     Select Plan
                                                 </button>
-                                                <BenefitLimitsBtn
-                                                    planKey={plan.planKey}
-                                                    isOpen={openPlanKey === plan.planKey}
-                                                    onOpen={() => setOpenPlanKey(plan.planKey)}
-                                                    onClose={() => setOpenPlanKey(null)}
-                                                    className="flex-1"
-                                                />
+                                                <button
+                                                    className="w-full flex items-center justify-center gap-1 px-2 py-2 border border-blue-300 text-blue-700 bg-white text-xs font-semibold flex-1"
+                                                    onClick={() => setOpenPlanKey(plan.planKey)}
+                                                    type="button"
+                                                >
+                                                    <span>Benefit limits</span>
+                                                    <span>&#9660;</span>
+                                                </button>
                                             </div>
                                         {/* End of card footer */}
                                         </motion.div>
@@ -224,6 +233,15 @@ const ProjectSection = (props) => {
                         
                     </div>
                     {/* Compare Plans Modal removed */}
+                    {/* Render the modal for the open plan at the root, not per card */}
+                    {openPlanKey && (
+                        <BenefitLimitsBtn
+                            planKey={openPlanKey}
+                            isOpen={!!openPlanKey}
+                            onOpen={() => {}}
+                            onClose={() => setOpenPlanKey(null)}
+                        />
+                    )}
                 </div>
                 {/* Genfin Benefits & Advantages Cards Carousel Section */}
                 <div className="content-area">

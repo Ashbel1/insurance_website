@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import { totalPrice } from "../../utils";
 
-
 const Header = (props) => {
     const [cartActive, setcartState] = useState(false);
 

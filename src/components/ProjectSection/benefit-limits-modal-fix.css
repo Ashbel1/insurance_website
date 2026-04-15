@@ -1,0 +1,9 @@
+/* Ensures modal overlays header */
+.site-header {
+  position: relative;
+  z-index: 1100;
+}
+
+.benefit-limits-modal-overlay {
+  z-index: 1200 !important;
+}

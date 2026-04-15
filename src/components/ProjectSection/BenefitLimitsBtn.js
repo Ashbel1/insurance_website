@@ -1,4 +1,5 @@
 import React from "react";
+import "./benefit-limits-modal-fix.css";
 
 function BenefitLimitsBtn({ planKey, isOpen, onOpen, onClose, className }) {
     // --- Plan benefits data (do not remove, user wants this info in modal) ---
@@ -207,8 +208,15 @@ function BenefitLimitsBtn({ planKey, isOpen, onOpen, onClose, className }) {
                 <span>&#9660;</span>
             </button>
             {isOpen && (
-                <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.45)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}>
-                    <div style={{ background: '#fff', borderRadius: 10, padding: 28, minWidth: 340, maxWidth: 640, maxHeight: '80vh', overflowY: 'auto', position: 'relative', border: '2px solid #2563eb', boxShadow: '0 8px 32px rgba(0,0,0,0.18)' }}>
+                <div
+                    className="benefit-limits-modal-overlay"
+                    style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}
+                    onClick={onClose}
+                >
+                    <div
+                        style={{ background: '#fff', borderRadius: 10, padding: 28, minWidth: 340, maxWidth: 640, maxHeight: '80vh', overflowY: 'auto', position: 'relative', border: '2px solid #2563eb', boxShadow: '0 8px 32px rgba(0,0,0,0.18)' }}
+                        onClick={e => e.stopPropagation()}
+                    >
                         <button style={{ position: 'absolute', top: 10, right: 18, fontSize: 28, background: 'none', border: 'none', cursor: 'pointer', color: '#2563eb', fontWeight: 700, zIndex: 10 }} onClick={onClose} aria-label="Close">&times;</button>
                         <h3 style={{ fontWeight: 700, fontSize: 24, marginBottom: 18, color: '#1e293b' }}>{planKey} Benefit Limits</h3>
                         <table style={{ width: '100%', fontSize: 15, borderCollapse: 'collapse' }}>

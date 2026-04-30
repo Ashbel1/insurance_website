@@ -43,7 +43,7 @@ const Hero = () => {
                             </div>
                             <div className="clearfix"></div>
                             <div className="slide-btns">
-                                <Link to="/join-genfin" className="theme-btn">Join Genfin<span></span></Link>
+                                <Link to="/plans_packages" className="theme-btn">Join Genfin<span></span></Link>
                             </div>
                         </div>
                     </div>

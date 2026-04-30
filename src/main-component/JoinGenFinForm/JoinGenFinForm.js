@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { usePlan } from '../../context/PlanContext';
 import Navbar from '../../components/Navbar/Navbar';
 import Logo from '../../images/logo.png';
 import PrincipalDetails from './PrincipalDetails';
@@ -20,12 +21,14 @@ const steps = [
 const JoinGenFinForm = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
+  const { selectedPlan } = usePlan();
   const [formData, setFormData] = useState({
     principal: {},
     dependents: [],
     medical: { conditions: [], details: [], pregnancy: [] },
     banking: {},
     declaration: {},
+    plan: selectedPlan || null,
   });
 
   const nextStep = () => setStep((s) => Math.min(s + 1, steps.length - 1));
@@ -38,7 +41,7 @@ const JoinGenFinForm = () => {
   const handleSubmit = () => {
     // Mock submit: log data
     alert('Form submitted! Check console for data.');
-    console.log('Submitted Data:', formData);
+    console.log('Submitted Data:', { ...formData, plan: selectedPlan });
     setTimeout(() => {
       navigate('/');
     }, 1500); // Redirect after 1.5 seconds
@@ -60,6 +63,15 @@ const JoinGenFinForm = () => {
         }}
       >
         <div className="join-genfin-form join-genfin-form-overlay">
+          {/* Show selected plan at the top */}
+          {selectedPlan && (
+            <div className="selected-plan-summary bg-yellow-50 border border-yellow-300 rounded p-4 mb-4 text-center">
+              <h3 className="text-lg font-bold text-yellow-700 mb-1">Selected Plan: {selectedPlan.name}</h3>
+              <div className="text-gray-700">Price: ${selectedPlan.price} / {selectedPlan.covers} {selectedPlan.covers > 1 ? 'people' : 'person'}</div>
+              {selectedPlan.extra && <div className="text-gray-600">Extra Dependent: ${selectedPlan.extra}</div>}
+              <div className="text-xs text-gray-500 mt-1">{selectedPlan.tag}</div>
+            </div>
+          )}
           <div className="form-steps">
             {steps.map((label, idx) => (
               <div key={label} className={`step${step === idx ? ' active' : ''}`}>{label}</div>

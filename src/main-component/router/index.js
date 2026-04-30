@@ -1,4 +1,5 @@
 import React from 'react';
+import { PlanProvider } from '../../context/PlanContext';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 
 import Homepage from '../HomePage/HomePage'
@@ -36,9 +37,10 @@ import ErrorPage from '../ErrorPage/ErrorPage';
 const AllRoute = () => {
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
+    <PlanProvider>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="home" element={<Homepage />} />
           <Route path="about" element={<AboutPage />} />
@@ -66,10 +68,10 @@ const AllRoute = () => {
           <Route path='blog-single-fullwidth/:slug' element={<BlogDetailsFull />} /> */}
           <Route path='contact' element={<ContactPage />} />
           <Route path='404' element={<ErrorPage />} />
-        </Routes>
-      </BrowserRouter>
-
-    </div>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </PlanProvider>
   );
 }
 

@@ -1,4 +1,6 @@
 import React from "react";
+import { usePlan } from '../../context/PlanContext';
+import { useNavigate } from 'react-router-dom';
 import { Shield, Users, Gem, Star, HeartPulse, UserPlus, Eye, CheckCircle, Info } from "lucide-react";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
@@ -131,6 +133,8 @@ const settings = {
 
 const ProjectSection = (props) => {
     const [openPlanKey, setOpenPlanKey] = React.useState(null);
+    const { setSelectedPlan } = usePlan();
+    const navigate = useNavigate();
     // Find the plan object for the open modal
     const openPlan = React.useMemo(() => {
         for (const cat of planCategories) {
@@ -139,6 +143,11 @@ const ProjectSection = (props) => {
         }
         return null;
     }, [openPlanKey]);
+
+    const handleSelectPlan = (plan) => {
+        setSelectedPlan(plan);
+        navigate('/join-genfin');
+    };
 
     return (
         <section className={`projects-section ${props.prClass}`}>
@@ -205,7 +214,11 @@ const ProjectSection = (props) => {
                                             </div>
                                             {/* CTA Button */}
                                             <div className="p-4 border-t bg-gradient-to-r from-yellow-50 to-yellow-100 flex flex-row items-center justify-between gap-2 mt-auto">
-                                                <button type="button" className="flex-1 flex items-center justify-center gap-2 px-2 py-2 rounded bg-yellow-600 text-white font-semibold shadow hover:bg-yellow-700 transition text-sm min-w-0">
+                                                <button
+                                                    type="button"
+                                                    className="flex-1 flex items-center justify-center gap-2 px-2 py-2 rounded bg-yellow-600 text-white font-semibold shadow hover:bg-yellow-700 transition text-sm min-w-0"
+                                                    onClick={() => handleSelectPlan(plan)}
+                                                >
                                                     Select Plan
                                                 </button>
                                                 <button

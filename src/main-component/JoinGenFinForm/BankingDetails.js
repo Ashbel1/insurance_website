@@ -47,13 +47,13 @@ const BankingDetails = ({ data, onChange, onNext, onBack }) => {
           <option value="no">No</option>
         </select>
       </div>
-      <div className="form-group">
+      <div className="form-group"> 
         <label>Amount 1st day of payment</label>
-        <input name="firstPaymentAmount" value={local.firstPaymentAmount || ''} onChange={handleChange} required />
+        <input type="number" name="firstPaymentAmount" value={local.firstPaymentAmount || ''} onChange={handleChange} required />
       </div>
       <div className="form-group">
         <label>Day of each month thereafter</label>
-        <input name="monthlyPaymentDay" value={local.monthlyPaymentDay || ''} onChange={handleChange} required />
+        <input type="number" name="monthlyPaymentDay" value={local.monthlyPaymentDay || ''} onChange={handleChange} required />
       </div>
       <div className="form-nav">
         <button type="button" onClick={onBack}>Back</button>

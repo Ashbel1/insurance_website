@@ -1,6 +1,9 @@
+// JoinGenFinForm.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePlan } from '../../context/PlanContext';
+import { addToCart } from '../../store/actions/action';
+import { useDispatch } from 'react-redux';
 import Navbar from '../../components/Navbar/Navbar';
 import Logo from '../../images/logo.png';
 import PrincipalDetails from './PrincipalDetails';
@@ -8,6 +11,7 @@ import Dependents from './Dependents';
 import MedicalHistory from './MedicalHistory';
 import BankingDetails from './BankingDetails';
 import Declaration from './Declaration';
+import api from '../../api/service/api';  // ✅ import the default axios instance
 import './JoinGenFinForm.css';
 
 const steps = [
@@ -20,6 +24,7 @@ const steps = [
 
 const JoinGenFinForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [step, setStep] = useState(0);
   const { selectedPlan } = usePlan();
   const [formData, setFormData] = useState({
@@ -30,6 +35,8 @@ const JoinGenFinForm = () => {
     declaration: {},
     plan: selectedPlan || null,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
   const nextStep = () => setStep((s) => Math.min(s + 1, steps.length - 1));
   const prevStep = () => setStep((s) => Math.max(s - 1, 0));
@@ -38,13 +45,45 @@ const JoinGenFinForm = () => {
     setFormData((prev) => ({ ...prev, [section]: data }));
   };
 
-  const handleSubmit = () => {
-    // Mock submit: log data
-    alert('Form submitted! Check console for data.');
-    console.log('Submitted Data:', { ...formData, plan: selectedPlan });
-    setTimeout(() => {
+  // Final submission using api.post
+  const handleFinalSubmit = async () => {
+    setIsSubmitting(true);
+    setError(null);
+
+    if (!formData.plan) {
+      setError('No plan selected. Please go back and choose a plan.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await api.post('/insurance/submit/', formData);
+      console.log('Submission successful:', response.data);
+      alert(`Submission successful! Reference ID: ${response.data.id}`);
       navigate('/');
-    }, 1500); // Redirect after 1.5 seconds
+    } catch (err) {
+      console.error('Submission error:', err);
+      if (err.response && err.response.data) {
+        setError(JSON.stringify(err.response.data, null, 2));
+      } else {
+        setError('Network error. Please check your connection and try again.');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleSubmit = () => {
+    // Add selected plan to cart
+    if (selectedPlan) {
+      dispatch(addToCart(selectedPlan, 1));
+    }
+    // Optionally log or alert
+    alert('Form submitted! Redirecting to checkout...');
+    // Redirect to checkout page
+    setTimeout(() => {
+      navigate('/checkout');
+    }, 1000);
   };
 
   return (
@@ -63,15 +102,21 @@ const JoinGenFinForm = () => {
         }}
       >
         <div className="join-genfin-form join-genfin-form-overlay">
-          {/* Show selected plan at the top */}
           {selectedPlan && (
             <div className="selected-plan-summary bg-yellow-50 border border-yellow-300 rounded p-4 mb-4 text-center">
               <h3 className="text-lg font-bold text-yellow-700 mb-1">Selected Plan: {selectedPlan.name}</h3>
               <div className="text-gray-700">Price: ${selectedPlan.price} / {selectedPlan.covers} {selectedPlan.covers > 1 ? 'people' : 'person'}</div>
               {selectedPlan.extra && <div className="text-gray-600">Extra Dependent: ${selectedPlan.extra}</div>}
-              <div className="text-xs text-gray-500 mt-1">{selectedPlan.tag}</div>
+              
             </div>
           )}
+          {error && (
+            <div className="error-message" style={{ color: 'red', background: '#ffeeee', padding: '10px', marginBottom: '15px', borderRadius: '5px' }}>
+              <strong>Error:</strong>
+              <pre style={{ whiteSpace: 'pre-wrap', fontSize: '12px' }}>{error}</pre>
+            </div>
+          )}
+          {isSubmitting && <div className="submitting">Submitting your application, please wait...</div>}
           <div className="form-steps">
             {steps.map((label, idx) => (
               <div key={label} className={`step${step === idx ? ' active' : ''}`}>{label}</div>

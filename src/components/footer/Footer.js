@@ -42,9 +42,10 @@ const Footer = (props) => {
                                     <h3>Contact Info</h3>
                                 </div>
                                 <ul>
-                                    <li>Cell 1: +263 786323131 </li>
-                                    <li>Cell 2: +263 774988861 </li>
-                                    <li>Email: genfin@genfin.com</li>
+                                    <li>Calls, WhatsApp, Sms Anytime </li>
+                                    <li>Cell 1: +263 775324418 </li>
+                                    <li>Cell 2: +263 711627868 </li>
+                                    <li>Email: ashbelmasemo@gmail.com</li>
                                     <li>Office Time: 9AM- 5PM</li>
                                 </ul>
                             </div>

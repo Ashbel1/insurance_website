@@ -55,12 +55,17 @@ const JoinGenFinForm = () => {
       setIsSubmitting(false);
       return;
     }
-
+ if (selectedPlan) {
+      dispatch(addToCart(selectedPlan, 1));
+    }
     try {
+           console.log('Submission successfulsss:', formData);
       const response = await api.post('/insurance/submit/', formData);
       console.log('Submission successful:', response.data);
       alert(`Submission successful! Reference ID: ${response.data.id}`);
-      navigate('/');
+       setTimeout(() => {
+      navigate('/checkout');
+    }, 1000);
     } catch (err) {
       console.error('Submission error:', err);
       if (err.response && err.response.data) {
@@ -73,18 +78,19 @@ const JoinGenFinForm = () => {
     }
   };
 
-  const handleSubmit = () => {
-    // Add selected plan to cart
-    if (selectedPlan) {
-      dispatch(addToCart(selectedPlan, 1));
-    }
-    // Optionally log or alert
-    alert('Form submitted! Redirecting to checkout...');
-    // Redirect to checkout page
-    setTimeout(() => {
-      navigate('/checkout');
-    }, 1000);
-  };
+  // const handleSubmit = () => {
+  //   // Add selected plan to cart
+  //   if (selectedPlan) {
+  //     dispatch(addToCart(selectedPlan, 1));
+  //   }
+    
+  //   // Optionally log or alert
+  //   alert('Form submitted! Redirecting to checkout...');
+  //   // Redirect to checkout page
+  //   setTimeout(() => {
+  //     navigate('/checkout');
+  //   }, 1000);
+  // };
 
   return (
     <>
@@ -136,7 +142,7 @@ const JoinGenFinForm = () => {
               <BankingDetails data={formData.banking} onChange={(data) => updateData('banking', data)} onNext={nextStep} onBack={prevStep} />
             )}
             {step === 4 && (
-              <Declaration data={formData.declaration} onChange={(data) => updateData('declaration', data)} onSubmit={handleSubmit} onBack={prevStep} />
+              <Declaration data={formData.declaration} onChange={(data) => updateData('declaration', data)} onSubmit={handleFinalSubmit} onBack={prevStep} />
             )}
           </div>
         </div>

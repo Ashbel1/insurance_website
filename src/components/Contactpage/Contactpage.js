@@ -34,15 +34,15 @@ const Contactpage = () => {
                                     <i className="ti-mobile"></i>
                                 </div>
                                 <h5>Phone</h5>
-                                <p>+263 786323131</p>
-                                <p>+263 774988861</p>
+                                <p>+263 775324418</p>
+                                <p>+263 711627868</p>
                             </div>
                             <div>
                                 <div className="icon">
                                     <i className="ti-location-arrow"></i>
                                 </div>
                                 <h5>Address</h5>
-                                <p>Genfin Medical Aid Fund Headquarters, 123 Samora Machel Ave, Harare, Zimbabwe</p>
+                                <p>Genfin Medical Aid Fund Headquarters, 10 Hughson and Wynd road Mt Pleasant, Harare, Zimbabwe</p>
                             </div>
                         </div>
 
